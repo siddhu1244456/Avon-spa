@@ -121,12 +121,12 @@ const SYNC_MARKER = '__AVON_SYNC_EVENT__';
 const SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByb3J5bHB5dW93aWVxcGRnaHFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI3OTM0NDMsImV4cCI6MjEwODM2OTQ0M30.pskeXi6R9jVi4yu3QIo98QmYawdaw5NSNxFR70SbpZg';
 
-const HERO_IMG_BMW = "/images/opt_hero_bmw.jpg";
-const HERO_IMG_AMG = "/images/opt_hero_amg.jpg";
-const HERO_IMG_PORSCHE = "/images/opt_hero_porsche.jpg";
-const HERO_IMG_AUDI = "/images/opt_hero_audi.jpg";
-const SERVICE_IMG_INTERIOR = "/images/opt_service_interior.jpg";
-const SERVICE_IMG_HEADLIGHT = "/images/opt_service_headlight.jpg";
+const HERO_IMG_BMW = "https://images.pexels.com/photos/6872591/pexels-photo-6872591.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+const HERO_IMG_AMG = "https://images.pexels.com/photos/16511358/pexels-photo-16511358.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+const HERO_IMG_PORSCHE = "https://images.pexels.com/photos/14231701/pexels-photo-14231701.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+const HERO_IMG_AUDI = "https://images.pexels.com/photos/8376593/pexels-photo-8376593.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+const SERVICE_IMG_INTERIOR = "https://images.pexels.com/photos/6873185/pexels-photo-6873185.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop";
+const SERVICE_IMG_HEADLIGHT = "https://images.pexels.com/photos/5233268/pexels-photo-5233268.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop";
 
 const HERO_SLIDES = [
   {
@@ -602,12 +602,12 @@ export default function App() {
   const [reviewSuccess, setReviewSuccess] = useState('');
   const reviewInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Automatic 6-Second (6000ms) Hero Car Slider
+  // Automatic 6.5-Second (6500ms) Hero Car Slider
   useEffect(() => {
     if (activeView !== 'website' && !isStandaloneAdmin) return;
     const timer = window.setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 6500);
     return () => window.clearInterval(timer);
   }, [activeView, isStandaloneAdmin]);
 
@@ -1149,20 +1149,6 @@ export default function App() {
             >
               Book Now
               <ArrowRight className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveView('admin')}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-stone-800 bg-stone-950 hover:bg-stone-900 px-3 py-2.5 text-xs font-medium text-stone-400 hover:text-stone-200 transition-colors"
-              title="Staff & Owner Dispatch Portal"
-            >
-              <LayoutDashboard className="h-3.5 w-3.5 text-stone-400" />
-              Admin Portal
-              {bookings.length > 0 && (
-                <span className="ml-0.5 rounded bg-emerald-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
-                  {bookings.length}
-                </span>
-              )}
             </button>
           </div>
 
